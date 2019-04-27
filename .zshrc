@@ -13,7 +13,6 @@ alias la='ls -a'
 alias lL='ls -la'
 alias ..="cd .."
 alias upd="sudo pacman -Syu --noconfirm"
-alias config='git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
 
 ## Functions
 
