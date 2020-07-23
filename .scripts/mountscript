@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-# Gives a dmenu prompt to mount unmounted drives.
-
-pgrep -x dmenu && exit
-
-mountable=$(lsblk -lp | grep "part $" | awk '{print $1, "(" $4 ")"}')
-[[ "$mountable" = "" ]] && exit 1
-chosen=$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')
