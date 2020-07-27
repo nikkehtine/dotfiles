@@ -12,9 +12,9 @@ setopt promptsubst
 PS1="[%F{45}%T%f] [%F{114}%n%f@%F{214}%m%f:%F{219}\$(spwd)%f]%(!.%F{1}#%f.%F{4}$%f) "
 
 ## Pure prompt
-if [ -e $HOME/git/pure ]
+if [ -e $HOME/.zsh/pure ]
 then
-	fpath+=$HOME/git/pure
+	fpath+=$HOME/.zsh/pure
 	autoload -U promptinit; promptinit
 	prompt pure
 fi
@@ -26,10 +26,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ls='ls -lAh --color=auto'
-alias upd='sudo apt update ; sudo apt upgrade -y ; sudo flatpak update'
-
-## Autostart
-neofetch
+alias vi='vim'
+alias upd='sudo pacman -Syu --noconfirm'
 
 ## ZSH specific settings
 # man zshoptions
@@ -85,6 +83,32 @@ setopt share_history        # share hist between sessions
 # Some tty improvement
 ttyctl -f
 
+## Functions
+
+# Shortened PWD
+function spwd {
+    paths=(${(s:/:)PWD})
+
+    cur_path='/'
+    cur_short_path='/'
+    for directory in ${paths[@]}
+    do
+    cur_dir=''
+        for (( i=0; i<${#directory}; i++ )); do
+            cur_dir+="${directory:$i:1}"
+            matching=("$cur_path"/"$cur_dir"*/)
+            if [[ ${#matching[@]} -eq 1 ]]; then
+            break
+        fi
+    done
+    cur_short_path+="$cur_dir/"
+    cur_path+="$directory/"
+    done
+
+    printf %q "${cur_short_path: : -1}"
+    echo
+}
+
 ## Keybindings
 # Lookup in /etc/termcap or /etc/terminfo else, you can get the right keycode
 # by typing ^v and then type the key or key combination you want to use.
@@ -111,4 +135,4 @@ bindkey '\eOH'  beginning-of-line       # Home
 bindkey '\eOF'  end-of-line             # End
 
 ## Load zsh-syntax-highlighting last
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
