@@ -1,4 +1,10 @@
 # /etc/zsh/zshrc or ~/.zshrc
+#
+# .zshrc file by github.com/nikkehtine
+#
+# Additional packages that need to be installed: vim, git, pkgfile, zsh-syntax-highlighting
+#
+# NOTE: This is a user .zshrc file. DO NOT USE UNDER ROOT. It might break your directory structure and certain things might not work.
 
 ## Environment
 if [ -e /etc/environment ]
@@ -12,22 +18,54 @@ setopt promptsubst
 PS1="[%F{45}%T%f] [%F{114}%n%f@%F{214}%m%f:%F{219}\$(spwd)%f]%(!.%F{1}#%f.%F{4}$%f) "
 
 ## Pure prompt
-if [ -e $HOME/.zsh/pure ]
+if [ -d $HOME/.zsh/pure ]
 then
 	fpath+=$HOME/.zsh/pure
 	autoload -U promptinit; promptinit
 	prompt pure
+else
+	echo "You might wanna install Pure Prompt by running the command:"
+	echo "$ pureprompt"
 fi
 
 ## Aliases
+
+# Edit .zshrc and reload it on exit
 alias zshrc='vim ~/.config/zsh/.zshrc ; source ~/.config/zsh/.zshrc'
-alias ~='cd $HOME'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias ls='ls -lAh --color=auto'
+alias reload='source ~/.config/zsh/.zshrc'
+
+# Make the commands more verbose and human readable
+alias ls='ls -lAh --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias free='free -m'
+
+# Use vim instead of vi
 alias vi='vim'
+
+# pacman commands
 alias upd='sudo pacman -Syu --noconfirm'
+alias unlock='sudo rm /var/lib/pacman/db.lck'
+
+# Git stuff
+alias addall='git add .'
+alias addup='git add -u'
+alias branch='git branch'
+alias checkout='git checkout'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias status='git status'
+alias tag='git tag'
+alias newtag='git tag -a'
+
+# Install the Pure Zsh Prompt
+alias pureprompt='mkdir ~/.zsh ; cd ~/.zsh ; git clone https://github.com/sindresorhus/pure.git ; source ~/.config/zsh/.zshrc'
+
+# Run Shiginima launcher
+alias mc='java -jar ~/shiginima/shiginimav4400.jar'
+
 
 ## ZSH specific settings
 # man zshoptions
@@ -66,6 +104,12 @@ autoload -Uz compinit
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION 
 
 ## History settings
+if [ -d ~/.cache/zsh ]
+then
+	echo "idk what lol" >> /dev/random
+else
+	mkdir ~/.cache/zsh
+fi
 export ZSH_CACHE_DIR=~/.cache/zsh
 export HISTSIZE=5000
 export SAVEHIST=5000
@@ -78,7 +122,7 @@ setopt inc_append_history   # append instead of replace
 setopt share_history        # share hist between sessions
 
 # Suggest package if command not found
-#source /usr/share/doc/pkgfile/command-not-found.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # Some tty improvement
 ttyctl -f
