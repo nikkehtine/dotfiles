@@ -14,6 +14,7 @@
 * intel-ucode
 * man-db
 * flatpak
+* libappimage
 * pulseaudio-bluetooth *(For bluetooth audio devices)*
 
 ### Drivers
@@ -23,6 +24,9 @@
 * mesa-vdpau
 * amd-vlk
 * xf86-video-amdgpu
+* libdvdcss
+* ntfs-3g
+* vkd3d
 
 ### multilib
 
@@ -30,6 +34,9 @@ Enable *multilib* repo to install these packages.
 
 * steam
 * wine
+  + winetricks
+  + wine-mono
+  + wine-gecko
 
 #### Drivers and support
 
@@ -39,10 +46,21 @@ Enable *multilib* repo to install these packages.
 
 ## Misc
 
+* vim
 * git
 * firefox
+  + firefox-i18n-pl
+* thunderbird
+  + thunderbird-i18n-pl
 * qbittorrent
-
+* hunspell
+  + hunspell-en_US
+  + hunspell-pl
+* htop
+* neofetch
+  + pacman-contrib
+* obs-studio
+* simple-scan
 
 ## KDE Plasma
 
@@ -67,6 +85,7 @@ Enable *multilib* repo to install these packages.
 * kdenetwork-filesharing
   + kio-gdrive
 * spectacle
+* kate
 
 ## Fonts
 
@@ -80,17 +99,23 @@ Enable *multilib* repo to install these packages.
 * ttf-ubuntu-font-family
 * ttf-inconsolata
 * ttf-liberation
+* ttf-fira-sans
+* ttf-fira-mono
+* ttf-fira-code
 
 ## AUR
 
-Enable *chaotic-aur* repo to install AUR binary packages.
+Enable [*chaotic-aur*](https://lonewolf.pedrohlc.com/chaotic-aur/) repo to install AUR binary packages.
 
 ### Misc
 
 * ungoogled-chromium
 * pamac-aur
-  + pamac-tray-appindicator
 * discord
+* librewolf
 
 ### Themes
 
+* qogir-gtk-theme-git
+* qogir-icon-theme-git
+* qogir-kde-theme-git
