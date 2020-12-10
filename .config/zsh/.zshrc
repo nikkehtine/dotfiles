@@ -30,6 +30,9 @@ fi
 
 ## Aliases
 
+# Alias please to sudo for a much more wholesome unix experience
+alias please='sudo'
+
 # Edit .zshrc and reload it on exit
 alias zshrc='vim ~/.config/zsh/.zshrc ; source ~/.config/zsh/.zshrc'
 alias reload='source ~/.config/zsh/.zshrc'
@@ -47,6 +50,8 @@ alias vi='vim'
 alias upd='sudo pacman -Syu --noconfirm'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
 
+#alias upd='sudo apt update && sudo apt upgrade' # Debian
+
 # Git stuff
 alias addall='git add .'
 alias addup='git add -u'
@@ -54,6 +59,7 @@ alias branch='git branch'
 alias checkout='git checkout'
 alias commit='git commit -m'
 alias fetch='git fetch'
+alias gdiff="git diff"
 alias pull='git pull origin'
 alias push='git push origin'
 alias status='git status'
@@ -61,11 +67,7 @@ alias tag='git tag'
 alias newtag='git tag -a'
 
 # Install the Pure Zsh Prompt
-alias pureprompt='mkdir ~/.zsh ; cd ~/.zsh ; git clone https://github.com/sindresorhus/pure.git ; source ~/.config/zsh/.zshrc'
-
-# Run Shiginima launcher
-alias mc='java -jar ~/shiginima/shiginimav4400.jar'
-
+alias pureprompt='mkdir ~/.zsh ; cd ~/.zsh ; git clone https://github.com/sindresorhus/pure.git ; cd ~ ; source ~/.config/zsh/.zshrc'
 
 ## ZSH specific settings
 # man zshoptions
@@ -179,4 +181,4 @@ bindkey '\eOH'  beginning-of-line       # Home
 bindkey '\eOF'  end-of-line             # End
 
 ## Load zsh-syntax-highlighting last
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
