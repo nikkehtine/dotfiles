@@ -28,6 +28,9 @@ else
 	echo "$ pureprompt"
 fi
 
+## Add .scripts to path
+export PATH=$PATH:~/.scripts
+
 ## Aliases
 
 # Alias please to sudo for a much more wholesome unix experience
@@ -43,14 +46,20 @@ alias grep='grep --color=auto'
 alias df='df -h'
 alias free='free -m'
 
-# Use vim instead of vi
-alias vi='vim'
+# Use nvim instead of vi(m)
+alias vi='nvim'
+alias vim='nvim'
 
 # pacman commands
 alias upd='sudo pacman -Syu --noconfirm'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
 
 #alias upd='sudo apt update && sudo apt upgrade' # Debian
+#alias upd='sudo dnf update' # Fedora
+
+# Flatpak and Snap
+alias sup='sudo snap refresh'
+alias fup='flatpak update'
 
 # Git stuff
 alias addall='git add .'
@@ -67,7 +76,7 @@ alias tag='git tag'
 alias newtag='git tag -a'
 
 # Install the Pure Zsh Prompt
-alias pureprompt='mkdir ~/.zsh ; cd ~/.zsh ; git clone https://github.com/sindresorhus/pure.git ; cd ~ ; source ~/.config/zsh/.zshrc'
+alias pureprompt='mkdir ~/.zsh ; cd ~/.zsh ; git clone https://github.com/sindresorhus/pure.git ; cd ~ ; source .config/zsh/.zshrc'
 
 ## ZSH specific settings
 # man zshoptions
