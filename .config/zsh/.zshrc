@@ -115,6 +115,12 @@ autoload -Uz compinit
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION 
 
 ## History settings
+if [ -d ~/.cache ]
+then
+	echo "idk what lol" >> /dev/random
+else
+	mkdir ~/.cache
+fi
 if [ -d ~/.cache/zsh ]
 then
 	echo "idk what lol" >> /dev/random
