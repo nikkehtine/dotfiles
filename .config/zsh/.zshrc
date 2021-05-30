@@ -24,7 +24,7 @@ then
 	autoload -U promptinit; promptinit
 	prompt pure
 else
-	echo "You might wanna install Pure Prompt by running the command:"
+	echo "You might want to install Pure Prompt by running the command:"
 	echo "$ pureprompt"
 fi
 
@@ -51,10 +51,10 @@ alias vi='nvim'
 alias vim='nvim'
 
 # pacman commands
-alias upd='sudo pacman -Syu --noconfirm'
-alias unlock='sudo rm /var/lib/pacman/db.lck'
+#alias upd='sudo pacman -Syu --noconfirm'
+#alias unlock='sudo rm /var/lib/pacman/db.lck'
 
-#alias upd='sudo apt update && sudo apt upgrade' # Debian
+alias upd='sudo apt update && sudo apt upgrade' # Debian
 #alias upd='sudo dnf update' # Fedora
 
 # Flatpak and Snap
@@ -115,17 +115,8 @@ autoload -Uz compinit
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION 
 
 ## History settings
-if [ -d ~/.cache ]
-then
-	echo "idk what lol" >> /dev/random
-else
-	mkdir ~/.cache
-fi
-if [ -d ~/.cache/zsh ]
-then
-	echo "idk what lol" >> /dev/random
-else
-	mkdir ~/.cache/zsh
+if [ ! -d ~/.cache/zsh ] ; then
+	mkdir -p ~/.cache/zsh
 fi
 export ZSH_CACHE_DIR=~/.cache/zsh
 export HISTSIZE=5000
@@ -138,8 +129,8 @@ setopt hist_verify          # verify hist expansion
 setopt inc_append_history   # append instead of replace
 setopt share_history        # share hist between sessions
 
-# Suggest package if command not found
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# Suggest package if command not found (Install pkgfile on Arch)
+#source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # Some tty improvement
 ttyctl -f
